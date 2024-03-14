@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal-Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="background"></div>
+
+        <div class="container">
+            <div class="tap-bar">
+                <div class="navigate">
+                    <div class="red-dot" style="background-color: red"></div>
+                    <div class="yellow-dot" style="background-color: yellow"></div>
+                    <div class="green-dot" style="background-color: green"></div>
+                </div>
+                <div class="detail-name">
+                    <h3>chetra/terminal_portfolio</h3>
+                </div>
+            </div>
+
+            <div class="content" ref="content">
+                <div class="welcome">
+                    <p>Today is, [[ currentDate ]]</p>
+                    <p style="font-size: 50px">-- WELCOME --</p>
+                </div>
+                <div class="search-com">
+                    <div v-if="dir_exist" class="navi-route">
+                        <span class="segment"> chetra </span>
+                        <span class="separator">/</span>
+                        <span class="segment"> portfolio </span>
+                        <span class="separator">/</span>
+                    </div>
+
+                    <div v-html="output"></div>
+
+                    <span class="separator">/</span>
+                    <input type="text" placeholder="Try help, about, contact, project.." class="search-input"
+                        style="font-weight: bold" autofocus v-model="inputCmd" @keyup.enter="handleCommand" />
+
+                </div>
+            </div>
+        </div>
+
+        <div class="normal-site">
+            <span>prefer normal site: </span>
+            <a href="https://ch3tra.github.io/personal_portfolio/" target="_blank" rel="noopener noreferrer">Personal-Portfolio</a>
+        </div>
+
+        <div class="popup">
+            <span>NO RESPONSIVE PAGE</span><br>
+            <span>Please use larger screen, to ensure good experience!</span>
+        </div>
+    </div>
+</body>
+
+<script>
+    var vue_obj = new Vue({
+        el: '#app',
+        delimiters: ["[[", ']]'],
+        data: {
+            dir_exist: true,
+            currentDate: '',
+            inputCmd: '',
+            output: '',
+        },
+        methods: {
+            handleCommand() {
+                const command = this.inputCmd.trim().toLowerCase();
+
+                if (command === "clear") {
+                    this.output = "";
+                    this.inputCmd = "";
+                    this.dir_exist = true;
+                    return;
+                }
+
+                const inputAndOutput = `<div class="navi-route">
+                            <span class="segment"> chetra </span>
+                            <span class="separator">/</span>
+                            <span class="segment"> portfolio </span>
+                            <span class="separator">/</span>
+                            <span class="segment">${this.inputCmd}</span>
+                        </div> <span class='separator'>/</span><input type='text' class='search-input' style='font-weight: bold' disabled value='${this.inputCmd}' /><br>`;
+                this.inputCmd = "";
+                this.dir_exist = false;
+
+                switch (command) {
+                    case "help":
+                        this.output += inputAndOutput;
+                        this.output += `<div style="padding: 0 0 10px 50px;" class="help">
+                                    <br><p style="margin: 0px;">Available commands:</p>
+                                    <br><span>help</span> - Display available commands.
+                                    <br><span>projects</span> - Show my projects.
+                                    <br><span>about</span> - Display information about me.
+                                    <br><span>contact</span> - Display my contact.
+                                    <br><span>cv</span> - Download my CV.
+                                    <br><span>clear</span> - Clean all history.
+                                </div>`
+                        break;
+                    case "project":
+                        this.output += inputAndOutput;
+                        this.output += `<div style="padding: 0 0 0px 50px;" class="project">
+                                    <br><p style="margin: 0px;">My Projects:</p>
+                                    <br><span>- Project 1:</span> <a style="font-weight: bold;" href="https://github.com/Ch3tra/flask_final" target="_blank" rel="noopener noreferrer">Little E-Commerce</a>
+                                    <br><span>- Project 2:</span> <a style="font-weight: bold;" href="https://github.com/Ch3tra/personal_portfolio" target="_blank" rel="noopener noreferrer">Personal-Portfolio</a>
+                                    <br><span>- Project 3:</span> <a style="font-weight: bold;" href="#" target="_blank" rel="noopener noreferrer">Terminal-Portfolio</a>
+                                </div>`;
+                        break;
+                    case "about":
+                        this.output += inputAndOutput;
+                        this.output += `<div style="padding: 0; text-align: center;" class="abouts">
+                                    <br><p style="margin: 0;">About Me:</p>
+                                    <br><span style="font-weight: bold;">- Education -</span>
+                                    <br><span>Bachelor in MIS at SETEC Institute (Senior) / 2020 - Present</span>
+                                    <br><span>Graduated High School / 2016</span>
+                                </div>`
+                        break;
+                    case "contact":
+                        this.output += inputAndOutput;
+                        this.output += `<div style="padding: 0 0 0px 50px;" class="contact">
+                                    <br><p style="margin: 0px;">Get in touch:</p>
+                                    <br><span>- Email:</span> chetra.ou111@gmail.com
+                                    <br><span>- Telegram:</span> <a style="font-weight: bold;" href="https://t.me/ch3tra" target="_blank" rel="noopener noreferrer">@Ch3tra</a>
+                                    <br><span>- Facebook:</span> <a style="font-weight: bold;" href="https://www.facebook.com/ch3tra.ou/" target="_blank" rel="noopener noreferrer">@ch3tra.ou</a>
+                                    <br><span>- Github:</span> <a style="font-weight: bold;" href="https://github.com/Ch3tra" target="_blank" rel="noopener noreferrer">@Ch3tra</a>
+                                </div>`
+                        break;
+                    case "cv":
+                        this.output += inputAndOutput;
+                        this.output += `<div style="padding: 0 0 0px 50px;" class="contact">
+                                    <br><span>Download CV...</span>
+                                </div>`
+                        setTimeout(() => {
+                            window.open('./assets/Ou-Chetra-CV.pdf', '_blank'); // Open the CV file in a new tab
+                        }, 2000);
+                        break;
+                    default:
+                        this.output += inputAndOutput;
+                        this.output += `<div style="padding: 0 0 20px 50px;">
+                                    <br>Invalid command. Type 'help' to see available commands.
+                                </div>`
+                        break;
+                }
+                this.$nextTick(() => {
+                    this.scrollToEnd();
+                });
+            },
+            scrollToEnd() {
+                const contentDiv = this.$refs.content;
+                contentDiv.scrollTop = contentDiv.scrollHeight;
+            },
+            clearContent() {
+                this.output = "";
+                this.inputCmd = "";
+                this.dir_exist = true;
+            }
+        },
+        mounted() {
+            setInterval(() => {
+                this.currentDate = new Date().toDateString();
+            }, 1000);
+            this.currentDate = new Date().toDateString();
+
+            //ctrl+L or ctrl+c to clear content
+            this.clearContent = this.clearContent.bind(this);
+            document.addEventListener('keydown', (event) => {
+                if ((event.ctrlKey || event.metaKey) && event.key === 'c') {
+                    this.clearContent();
+                }
+                if ((event.ctrlKey || event.metaKey) && event.key === 'l') {
+                    this.clearContent();
+                }
+            });
+        }
+    })
+</script>
+
+</html>

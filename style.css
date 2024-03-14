@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("assets/background-terminal.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: 1px solid gold;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    color: rgb(219, 216, 216);
+    font-size: 16px;
+    overflow: hidden;
+    height: 650px;
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigate {
+    display: flex;
+}
+
+.red-dot,
+.yellow-dot,
+.green-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+    position: relative;
+}
+
+.tap-bar {
+    display: grid;
+    grid-template-columns: 1fr 12fr;
+    height: auto;
+    background-color: rgb(34, 37, 51);
+    border-radius: 10px 10px 0 0;
+}
+
+.navigate {
+    margin-left: 15px;
+    align-self: center;
+}
+
+.detail-name {
+    align-self: center;
+    justify-self: center;
+    font-size: 13px;
+}
+
+.content {
+    overflow-y: auto; /* Add vertical scrollbar when content exceeds container height */
+    flex: 1; /* Allow the content to expand and take up remaining space */
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    color: white;
+}
+
+.content p {
+    margin: 10px 10px 10px 10px;
+}
+
+.search-com {
+    display: block;
+    padding: 10px;
+}
+
+.help span {
+    font-weight: bold;
+    color: greenyellow;
+    padding: 0 0 10px 0;
+    display: inline-block;
+    width: 10em;
+}
+
+.project span {
+    font-weight: bold;
+    padding: 0 0 10px 0;
+    display: inline-block;
+    width: 10em;
+}
+
+.abouts span {
+    display: inline-block;
+    text-align: left;
+    padding: 0 0 20px 0;
+}
+
+.contact span {
+    font-weight: bold;
+    padding: 0 0 10px 0;
+    display: inline-block;
+    width: 10em;
+}
+
+.navi-route {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.segment {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.separator {
+    color: #888;
+    margin-right: 5px;
+}
+
+.search-input {
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    padding: 15px 0px 0px 0px;
+    outline: none;
+    width: 500px;
+    color: greenyellow;
+}
+
+.normal-site {
+    position: fixed;
+    bottom: 150px; /* Adjust as needed to position it vertically */
+    left: 50%; /* Adjust as needed to position it horizontally */
+    transform: translateX(-50%);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 850px) {
+    .popup {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .container {
+        display: none;
+    }
+    .popup {
+        position: fixed;
+        min-width: 500px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(244, 75, 69, 0.8); /* Semi-transparent background */
+        color: rgb(192, 191, 191);
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 9999; /* Ensure it's above other content */
+    }
+    .popup span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
