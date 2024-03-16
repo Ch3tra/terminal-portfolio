@@ -1,1 +1,1 @@
-* DEMO: https://terminal-portfolio-livid.vercel.app/
+* DEMO: https://ch3tra-terminal-portfolios.vercel.app/
