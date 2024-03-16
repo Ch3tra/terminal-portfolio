@@ -1,2 +1,1 @@
-https://ch3tra.github.io/terminal-portfolio/
- 
+* DEMO: https://terminal-portfolio-livid.vercel.app/
