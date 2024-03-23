@@ -41,7 +41,7 @@
                     <div v-html="output"></div>
 
                     <span class="separator">/</span>
-                    <input type="text" placeholder="Try help, about, contact, project.." class="search-input"
+                    <input type="text" placeholder="Try help, bio, contact, project.." class="search-input"
                         style="font-weight: bold" autofocus v-model="inputCmd" @keyup.enter="handleCommand" />
 
                 </div>
@@ -98,11 +98,24 @@
                         this.output += `<div style="padding: 0 0 10px 50px;" class="help">
                                     <br><p style="margin: 0px;">Available commands:</p>
                                     <br><span>help</span> - Display available commands.
+                                    <br><span>bio</span> - Display information about me.
                                     <br><span>projects</span> - Show my projects.
-                                    <br><span>about</span> - Display information about me.
                                     <br><span>contact</span> - Display my contact.
                                     <br><span>cv</span> - Download my CV.
                                     <br><span>clear</span> - Clean all history.
+                                </div>`
+                        break;
+                    case "bio":
+                        this.output += inputAndOutput;
+                        this.output += `<div style="padding: 0; text-align: center;" class="bio">
+                                    <br><span style="font-weight: bold;">- Education -</span>
+                                    <br><span>Bachelor in MIS at SETEC Institute (Senior) / 2020 - Present</span>
+                                    <br><span>Graduated High School / 2016</span>
+                                    <br><span style="font-weight: bold;">- Bio -</span>
+                                    <br><span>I am in my last year pursue degree in MIS at SETEC Institute and I love working on websites. 
+                                        I have learned different computer languages like Python, PHP, Java, plus tools like Laravel, Flask, and Vue.js. 
+                                        I have made some projects too, like a websites and an online store. 
+                                        I want to find a internship where I can keep learning and using what I know to make websites even better.</span>
                                 </div>`
                         break;
                     case "project":
@@ -114,15 +127,15 @@
                                     <br><span>- Project 3:</span> <a style="font-weight: bold;" href="https://github.com/Ch3tra/terminal-portfolio" target="_blank" rel="noopener noreferrer">Terminal-Portfolio</a>
                                 </div>`;
                         break;
-                    case "about":
-                        this.output += inputAndOutput;
-                        this.output += `<div style="padding: 0; text-align: center;" class="abouts">
-                                    <br><p style="margin: 0;">About Me:</p>
-                                    <br><span style="font-weight: bold;">- Education -</span>
-                                    <br><span>Bachelor in MIS at SETEC Institute (Senior) / 2020 - Present</span>
-                                    <br><span>Graduated High School / 2016</span>
-                                </div>`
-                        break;
+                    // case "about":
+                    //     this.output += inputAndOutput;
+                    //     this.output += `<div style="padding: 0; text-align: center;" class="abouts">
+                    //                 <br><p style="margin: 0;">About Me:</p>
+                    //                 <br><span style="font-weight: bold;">- Education -</span>
+                    //                 <br><span>Bachelor in MIS at SETEC Institute (Senior) / 2020 - Present</span>
+                    //                 <br><span>Graduated High School / 2016</span>
+                    //             </div>`
+                    //     break;
                     case "contact":
                         this.output += inputAndOutput;
                         this.output += `<div style="padding: 0 0 0px 50px;" class="contact">
