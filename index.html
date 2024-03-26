@@ -41,7 +41,7 @@
                     <div v-html="output"></div>
 
                     <span class="separator">/</span>
-                    <input type="text" placeholder="Try help, bio, contact, project.." class="search-input"
+                    <input type="text" placeholder="Try help, bio, contact, project..." class="search-input"
                         style="font-weight: bold" autofocus v-model="inputCmd" @keyup.enter="handleCommand" />
 
                 </div>
@@ -98,11 +98,11 @@
                         this.output += `<div style="padding: 0 0 10px 50px;" class="help">
                                     <br><p style="margin: 0px;">Available commands:</p>
                                     <br><span>help</span> - Display available commands.
-                                    <br><span>bio</span> - Display information about me.
-                                    <br><span>projects</span> - Show my projects.
-                                    <br><span>contact</span> - Display my contact.
+                                    <br><span>bio</span> - Display informations about me.
+                                    <br><span>project</span> - Show my projects.
+                                    <br><span>contact</span> - Display my contacts.
                                     <br><span>cv</span> - Download my CV.
-                                    <br><span>clear</span> - Clean all history.
+                                    <br><span>clear</span> - Clear all history.
                                 </div>`
                         break;
                     case "bio":
